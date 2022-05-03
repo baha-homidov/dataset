@@ -1,3 +1,7 @@
+//Homidov Mirzobakhtoyor
+//khamidov.mirzo@gmail.com
+//array.h
+
 #pragma once
 #include <stdexcept>
 #include <functional>
@@ -59,12 +63,12 @@ namespace ds
         *b = t;
     }
 
-}
+
 
 //--------------------------------------------------------------------------------
 
 template <typename T>
-ds::array<T>::array(const int &sz)
+array<T>::array(const int &sz)
 {
     arr = new T[sz];
     arr_size = sz;
@@ -74,7 +78,7 @@ ds::array<T>::array(const int &sz)
 //--------------------------------------------------------------------------------
 
 template <typename T>
-ds::array<T>::array()
+array<T>::array()
 {
     arr_size = arr_capacity = 0;
     arr = nullptr;
@@ -83,7 +87,7 @@ ds::array<T>::array()
 //--------------------------------------------------------------------------------
 
 template <typename T>
-ds::array<T>::~array()
+array<T>::~array()
 {
     delete[] arr;
 }
@@ -91,7 +95,7 @@ ds::array<T>::~array()
 //--------------------------------------------------------------------------------
 
 template <typename T>
-void ds::array<T>::push_back(const T &elem)
+void array<T>::push_back(const T &elem)
 {
     if (arr_size == 0 && arr_capacity == 0)
     {
@@ -132,7 +136,7 @@ void ds::array<T>::push_back(const T &elem)
 //--------------------------------------------------------------------------------
 
 template <class T>
-void ds::array<T>::pop_back()
+void array<T>::pop_back()
 {
     if (arr_size == 0)
         return;
@@ -143,7 +147,7 @@ void ds::array<T>::pop_back()
 //--------------------------------------------------------------------------------
 
 template <class T>
-void ds::array<T>::erase(const int &index)
+void array<T>::erase(const int &index)
 {
     if (index < 0 || index >= arr_size)
         return;
@@ -163,7 +167,7 @@ void ds::array<T>::erase(const int &index)
 //--------------------------------------------------------------------------------
 template <class T>
 
-void ds::array<T>::erase_if(std::function<bool(T)> const &predicate)
+void array<T>::erase_if(std::function<bool(T)> const &predicate)
 {
     if (arr_size == 0)
         return;
@@ -180,7 +184,7 @@ void ds::array<T>::erase_if(std::function<bool(T)> const &predicate)
 //--------------------------------------------------------------------------------
 
 template <typename T>
-T ds::array<T>::get(const int &index)
+T array<T>::get(const int &index)
 {
     if (index < 0 || index >= arr_size)
         throw std::invalid_argument("Invalid index\n");
@@ -191,7 +195,7 @@ T ds::array<T>::get(const int &index)
 //--------------------------------------------------------------------------------
 
 template <class T>
-T &ds::array<T>::operator[](int index)
+T &array<T>::operator[](int index)
 {
     if (index < 0 || index >= arr_size)
         throw std::invalid_argument("Invalid index\n");
@@ -201,7 +205,7 @@ T &ds::array<T>::operator[](int index)
 //--------------------------------------------------------------------------------
 
 template <class T>
-void ds::array<T>::set(const int &index, const T &val)
+void array<T>::set(const int &index, const T &val)
 {
     if (index < 0 || index >= arr_size || arr_size == 0)
         throw std::invalid_argument("Invalid index\n");
@@ -212,7 +216,7 @@ void ds::array<T>::set(const int &index, const T &val)
 //--------------------------------------------------------------------------------
 
 template <class T>
-int ds::array<T>::find(const T &val)
+int array<T>::find(const T &val)
 {
     for (int i = 0; i < this->arr_size; i++)
     {
@@ -225,7 +229,7 @@ int ds::array<T>::find(const T &val)
 //--------------------------------------------------------------------------------
 
 template <class T>
-int ds::array<T>::find_if(const std::function<bool(T)> &predicate)
+int array<T>::find_if(const std::function<bool(T)> &predicate)
 {
     for (int i = 0; i < this->arr_size; i++)
     {
@@ -238,7 +242,7 @@ int ds::array<T>::find_if(const std::function<bool(T)> &predicate)
 //--------------------------------------------------------------------------------
 
 template <class T>
-void ds::array<T>::sort()
+void array<T>::sort()
 {
     if (arr_size == 0 || arr_size == 1)
         return;
@@ -248,7 +252,7 @@ void ds::array<T>::sort()
 //--------------------------------------------------------------------------------
 
 template <class T>
-int ds::array<T>::partition(T *array, int low, int high)
+int array<T>::partition(T *array, int low, int high)
 {
     // select the rightmost element as pivot
     T pivot = array[high];
@@ -268,12 +272,12 @@ int ds::array<T>::partition(T *array, int low, int high)
             i++;
 
             // swap element at i with element at j
-            ds::swap(&array[i], &array[j]);
+            swap(&array[i], &array[j]);
         }
     }
 
     // swap pivot with the greater element at i
-    ds::swap(&array[i + 1], &array[high]);
+    swap(&array[i + 1], &array[high]);
 
     // return the partition point
     return (i + 1);
@@ -282,7 +286,7 @@ int ds::array<T>::partition(T *array, int low, int high)
 //--------------------------------------------------------------------------------
 
 template <class T>
-void ds::array<T>::quick_sort(T *array, int low, int high)
+void array<T>::quick_sort(T *array, int low, int high)
 {
     if (low < high)
     {
@@ -303,7 +307,7 @@ void ds::array<T>::quick_sort(T *array, int low, int high)
 //--------------------------------------------------------------------------------
 
 template <class T>
-int ds::array<T>::bin_search(const T &val)
+int array<T>::bin_search(const T &val)
 {
 
     int low, mid, high;
@@ -326,7 +330,7 @@ int ds::array<T>::bin_search(const T &val)
 //--------------------------------------------------------------------------------
 
 template <class T>
-bool ds::array<T>::sorted()
+bool array<T>::sorted()
 {
     for (int i = 0; i < arr_size - 1; i++)
     {
@@ -339,7 +343,7 @@ bool ds::array<T>::sorted()
 //--------------------------------------------------------------------------------
 
 template <class T>
-T ds::array<T>::front()
+T array<T>::front()
 {
     if (this->empty())
         throw std::invalid_argument("array is empty\n");
@@ -349,7 +353,7 @@ T ds::array<T>::front()
 //--------------------------------------------------------------------------------
 
 template <class T>
-T ds::array<T>::back()
+T array<T>::back()
 {
     if (this->empty())
         throw std::invalid_argument("array is empty\n");
@@ -359,7 +363,7 @@ T ds::array<T>::back()
 //--------------------------------------------------------------------------------
 
 template <class T>
-void ds::array<T>::deep_copy(const ds::array<T> &source)
+void array<T>::deep_copy(const array<T> &source)
 {
     delete[] arr;
     arr_size = source.arr_size;
@@ -375,7 +379,7 @@ void ds::array<T>::deep_copy(const ds::array<T> &source)
 }
 
 template <class T>
-ds::array<T> &ds::array<T>::operator=(const ds::array<T> &source)
+array<T> &array<T>::operator=(const array<T> &source)
 {
     if (this != &source)
     {
@@ -385,7 +389,7 @@ ds::array<T> &ds::array<T>::operator=(const ds::array<T> &source)
 }
 
 template <class T>
-void ds::array<T>::reverse()
+void array<T>::reverse()
 {
     if (arr_size <= 1)
         return;
@@ -393,12 +397,12 @@ void ds::array<T>::reverse()
     for (int i = 0, j = arr_size - 1; i < j; i++, j--)
     // swap elements from two ends of an array until the centre is reached
     {
-        ds::swap(&arr[i], &arr[j]);
+        swap(&arr[i], &arr[j]);
     }
 }
 
 template <class T>
-void ds::array<T>::reserve(const int &alloc_size)
+void array<T>::reserve(const int &alloc_size)
 {
     if (alloc_size <= this->arr_capacity)
         return;
@@ -416,4 +420,7 @@ void ds::array<T>::reserve(const int &alloc_size)
     delete[] arr;
     arr = new_arr;
     arr_capacity = alloc_size;
+}
+
+
 }

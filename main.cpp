@@ -3,7 +3,7 @@
 #include "string.h"
 #include <vector>
 #include "list.h"
-
+#include "sparse_matrix.h"
 bool fun(int b)
 {
   return b < 4;
@@ -13,13 +13,10 @@ int main()
   try
   {
     ds::list<int> ls;
+    for (int i = 0; i<10; i++)
+      ls.push_back(i);
 
-
-    ls.push_back(3);
-    ls.push_back(3);
-    ls.push_back(3);
-    ls.replace(3, 1);
-    ls.display();
+    ls.rdisplay();
   }
 
   catch (std::exception &e)

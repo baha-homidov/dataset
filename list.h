@@ -1,17 +1,13 @@
-#pragma once
+//Homidov Mirzobakhtiyor
+//khamidov.mirzo@gmail.com
+//list.h
 
+
+#pragma once
 #include <iostream>
 
 namespace ds
 {
-    template <typename Elem>
-    class Node
-    {
-    public:
-        Elem data;
-        Node<Elem> *prev;
-        Node<Elem> *next;
-    };
 
     //--------------------------------------------------------------------------------
 
@@ -20,9 +16,19 @@ namespace ds
     {
         void deep_copy(const list<Elem> &source);
 
-    public:
+        template <typename T>
+        class Node
+        {
+        public:
+            Elem data;
+            Node<T> *prev;
+            Node<T> *next;
+        };
+
         Node<Elem> *first = nullptr;
         Node<Elem> *last = nullptr;
+    public:
+        
 
         list() { first = last = nullptr; }
         list(Elem A[], int n); // constructor to inittialize list with and array of elements
@@ -44,7 +50,7 @@ namespace ds
         void pop_front();                  // delete and element at the front
         bool empty() const;
         bool sorted() const;
-        void replace(int index, const Elem& val);
+        void replace(int index, const Elem &val);
 
         void sort();                          // insertion sort
         Elem sum();                           // sum of all elements
@@ -56,10 +62,10 @@ namespace ds
         int find_if(std::function<bool(Elem)> const &predicate);
         void reverse();
     };
-}
+
 //------------------------------------------------------------------------------------------------------
 template <typename Elem>
-ds::list<Elem>::list(Elem A[], int n)
+list<Elem>::list(Elem A[], int n)
 {
     Node<Elem> *tail, *temp;
     first = new Node<Elem>;
@@ -81,7 +87,7 @@ ds::list<Elem>::list(Elem A[], int n)
 }
 
 template <typename Elem>
-bool ds::list<Elem>::empty() const
+bool list<Elem>::empty() const
 {
     if (this->begin() == this->end())
         return true;
@@ -92,7 +98,7 @@ bool ds::list<Elem>::empty() const
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-ds::list<Elem>::~list()
+list<Elem>::~list()
 {
     Node<Elem> *p = first;
     while (first)
@@ -105,7 +111,7 @@ ds::list<Elem>::~list()
 
 //------------------------------------------------------------------------------------------------------
 template <typename Elem>
-void ds::list<Elem>::display()
+void list<Elem>::display()
 {
     Node<Elem> *i = first;
     while (i != nullptr)
@@ -120,7 +126,7 @@ void ds::list<Elem>::display()
 //--------------------------------------------
 
 template <typename Elem>
-void ds::list<Elem>::rdisplay()
+void list<Elem>::rdisplay()
 {
     Node<Elem> *ptr = this->last;
     while (ptr)
@@ -134,7 +140,7 @@ void ds::list<Elem>::rdisplay()
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-int ds::list<Elem>::size()
+int list<Elem>::size()
 {
     Node<Elem> *p = first;
     int len = 0;
@@ -149,7 +155,7 @@ int ds::list<Elem>::size()
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-void ds::list<Elem>::insert(int index, Elem x)
+void list<Elem>::insert(int index, Elem x)
 {
     Node<Elem> *temp, *node_ptr = first;
 
@@ -188,7 +194,7 @@ void ds::list<Elem>::insert(int index, Elem x)
 
 //------------------------------------------------------------------------------------------------------
 template <typename Elem>
-void ds::list<Elem>::push_back(const Elem &val) // insert an element at the back
+void list<Elem>::push_back(const Elem &val) // insert an element at the back
 {
     Node<Elem> *temp = new Node<Elem>;
     temp->data = val;
@@ -209,7 +215,7 @@ void ds::list<Elem>::push_back(const Elem &val) // insert an element at the back
 
 //------------------------------------------------------------------------------------------------------
 template <typename Elem>
-void ds::list<Elem>::pop_back() // delete and element at the back
+void list<Elem>::pop_back() // delete and element at the back
 {
     if (this->size() == 0)
         return;
@@ -230,7 +236,7 @@ void ds::list<Elem>::pop_back() // delete and element at the back
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-void ds::list<Elem>::push_front(const Elem &val) // insert an element at the front
+void list<Elem>::push_front(const Elem &val) // insert an element at the front
 {
     Node<Elem> *temp = new Node<Elem>;
     temp->data = val;
@@ -250,7 +256,7 @@ void ds::list<Elem>::push_front(const Elem &val) // insert an element at the fro
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem> // delete and element at the front
-void ds::list<Elem>::pop_front()
+void list<Elem>::pop_front()
 {
     if (this->size() == 0)
         return;
@@ -270,7 +276,7 @@ void ds::list<Elem>::pop_front()
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-int ds::list<Elem>::erase(int index)
+int list<Elem>::erase(int index)
 {
     Node<Elem> *p, *q = nullptr;
     int x = -1;
@@ -307,7 +313,7 @@ int ds::list<Elem>::erase(int index)
 
 //------------------------------------------------------------------------------------------------------
 template <typename Elem>
-void ds::list<Elem>::sort() // insertion sort
+void list<Elem>::sort() // insertion sort
 {
     if (this->size() == 0 || this->size() == 1)
         return;
@@ -335,7 +341,7 @@ void ds::list<Elem>::sort() // insertion sort
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-Elem ds::list<Elem>::sum() // sum of all elements
+Elem list<Elem>::sum() // sum of all elements
 
 {
     Elem sum = 0;
@@ -349,7 +355,7 @@ Elem ds::list<Elem>::sum() // sum of all elements
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-Elem ds::list<Elem>::max() // max element in the list
+Elem list<Elem>::max() // max element in the list
 {
     if (this->begin() == this->end())
         return 0;
@@ -365,7 +371,7 @@ Elem ds::list<Elem>::max() // max element in the list
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-Elem ds::list<Elem>::min() // min element in the list
+Elem list<Elem>::min() // min element in the list
 {
     if (this->begin() == this->end())
         return 0;
@@ -381,7 +387,7 @@ Elem ds::list<Elem>::min() // min element in the list
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-void ds::list<Elem>::concat(const ds::list<Elem> &list2) // concatonating second list to the current list
+void list<Elem>::concat(const list<Elem> &list2) // concatonating second list to the current list
 {
     if (list2.empty())
         return;
@@ -395,9 +401,9 @@ void ds::list<Elem>::concat(const ds::list<Elem> &list2) // concatonating second
 //------------------------------------------------------------------------------------------------------
 
 template <typename Elem>
-ds::list<Elem> merge(const ds::list<Elem> &ls1, const ds::list<Elem> &ls2) // both lists should be sorted
+list<Elem> merge(const list<Elem> &ls1, const list<Elem> &ls2) // both lists should be sorted
 {
-    ds::list<Elem> result;
+    list<Elem> result;
     auto ls1_iter = ls1.begin();
     auto ls2_iter = ls2.begin();
     while (ls1_iter != ls1.end() && ls2_iter != ls2.end())
@@ -432,7 +438,7 @@ ds::list<Elem> merge(const ds::list<Elem> &ls1, const ds::list<Elem> &ls2) // bo
 //--------------------------------------------------------------------------------
 
 template <class Elem>
-void ds::list<Elem>::deep_copy(const ds::list<Elem> &source)
+void list<Elem>::deep_copy(const list<Elem> &source)
 {
 
     Node<Elem> *p = first;
@@ -458,7 +464,7 @@ void ds::list<Elem>::deep_copy(const ds::list<Elem> &source)
 //--------------------------------------------------------------------------------
 
 template <class Elem>
-ds::list<Elem> &ds::list<Elem>::operator=(const ds::list<Elem> &source)
+list<Elem> &list<Elem>::operator=(const list<Elem> &source)
 {
     if (this != &source)
     {
@@ -470,7 +476,7 @@ ds::list<Elem> &ds::list<Elem>::operator=(const ds::list<Elem> &source)
 //--------------------------------------------------------------------------------
 
 template <class Elem>
-int ds::list<Elem>::find(const Elem &val)
+int list<Elem>::find(const Elem &val)
 {
     int index = 0;
     Node<Elem> *ptr = first;
@@ -490,7 +496,7 @@ int ds::list<Elem>::find(const Elem &val)
 //--------------------------------------------------------------------------------
 
 template <class Elem>
-int ds::list<Elem>::find_if(const std::function<bool(Elem)> &predicate)
+int list<Elem>::find_if(const std::function<bool(Elem)> &predicate)
 {
     int index = 0;
     Node<Elem> *ptr = first;
@@ -510,7 +516,7 @@ int ds::list<Elem>::find_if(const std::function<bool(Elem)> &predicate)
 //--------------------------------------------------------------------------------
 
 template <class Elem>
-void ds::list<Elem>::erase_if(const std::function<bool(Elem)> &predicate)
+void list<Elem>::erase_if(const std::function<bool(Elem)> &predicate)
 {
     Node<Elem> *ptr = first;
     int index = 0;
@@ -532,10 +538,10 @@ void ds::list<Elem>::erase_if(const std::function<bool(Elem)> &predicate)
 //--------------------------------------------------------------------------------
 
 template <class Elem>
-void ds::list<Elem>::reverse()
+void list<Elem>::reverse()
 {
     Node<Elem> *p = first, *q;
-    while(p)
+    while (p)
     {
         q = p;
         p = p->next;
@@ -551,25 +557,26 @@ void ds::list<Elem>::reverse()
 
 //--------------------------------------------------------------------------------
 
-template<class Elem> bool ds::list<Elem>::sorted() const
+template <class Elem>
+bool list<Elem>::sorted() const
 {
     Node<Elem> *ptr = first;
 
     while (ptr->next)
     {
-        if(ptr->data>ptr->next->data)
+        if (ptr->data > ptr->next->data)
             return false;
         ptr = ptr->next;
     }
     return true;
 }
 
-
 //--------------------------------------------------------------------------------
 
-template<class Elem> void ds::list<Elem>::replace(int index, const Elem& val)
+template <class Elem>
+void list<Elem>::replace(int index, const Elem &val)
 {
-    if (index < 0 || index >= size()|| first == nullptr)
+    if (index < 0 || index >= size() || first == nullptr)
         return;
     Node<Elem> *ptr = first;
     for (int i = 0; i < index; i++)
@@ -578,5 +585,7 @@ template<class Elem> void ds::list<Elem>::replace(int index, const Elem& val)
     }
     ptr->data = val;
 }
-    //*******************************************************************************************************
-    //*******************************************************************************************************
+//*******************************************************************************************************
+//*******************************************************************************************************
+
+}
