@@ -50,6 +50,9 @@ namespace ds
         friend std::ostream &operator<<(std::ostream &os, sparse_matrix<U> &s);
     };
 
+
+//--------------------------------------------------------------------------------
+
     template <class T>
     ds::sparse_matrix<T> ds::sparse_matrix<T>::operator+(ds::sparse_matrix<T> &s)
     {
@@ -86,6 +89,11 @@ namespace ds
         sum->elem_num = k;
         return *sum;
     }
+
+
+//--------------------------------------------------------------------------------
+
+
 
     template <typename T>
     std::__1::istream &operator>>(std::__1::istream &is, ds::sparse_matrix<T> &s)
