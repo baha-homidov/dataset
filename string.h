@@ -1,6 +1,11 @@
+//Mirzobakhtiyor Homidov
+//khamidov.mirzo@gmail.com
+//string.h
+
 #pragma once
 #include <stdexcept>
 #include <iostream>
+
 namespace ds
 {
     class string
@@ -39,7 +44,7 @@ namespace ds
         friend bool operator>(const string &left, const string &right);
         friend string operator+(const string &str_a, const string &str_b);
         string &operator+=(const string &right);
-        // friend std::istream &operator>>(std::istream &in, ds::string &value);
+        // friend std::istream &operator>>(std::istream &in, string &value);
 
         void reserve(int alloc_size);
         void clear();
@@ -48,11 +53,11 @@ namespace ds
         void replace(int pos, int pos_count, char str[]);
         string substr(int pos, int pos_count);
     };
-}
+
 
 //--------------------------------------------------------------------------------
 
-ds::string::string(const char *source)
+string::string(const char *source)
 {
 
     int source_len = 0;
@@ -75,7 +80,7 @@ ds::string::string(const char *source)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::deep_copy(const ds::string &source)
+void string::deep_copy(const string &source)
 {
     delete[] arr;
     arr_size = source.arr_size;
@@ -91,7 +96,7 @@ void ds::string::deep_copy(const ds::string &source)
 }
 //--------------------------------------------------------------------------------
 
-std::ostream &ds::operator<<(std::ostream &os, const ds::string &str)
+std::ostream &operator<<(std::ostream &os, const string &str)
 {
     os << str.arr;
     return os;
@@ -99,7 +104,7 @@ std::ostream &ds::operator<<(std::ostream &os, const ds::string &str)
 
 //--------------------------------------------------------------------------------
 
-ds::string &ds::string::operator=(const ds::string &source)
+string &string::operator=(const string &source)
 {
     if (this != &source)
     {
@@ -110,7 +115,7 @@ ds::string &ds::string::operator=(const ds::string &source)
 
 //--------------------------------------------------------------------------------
 
-bool ds::operator==(const ds::string &left, const ds::string &right)
+bool operator==(const string &left, const string &right)
 {
     int i;
     for (i = 0; i < left.size() && i < right.arr_size; i++)
@@ -126,7 +131,7 @@ bool ds::operator==(const ds::string &left, const ds::string &right)
 
 //--------------------------------------------------------------------------------
 
-char &ds::string::operator[](int index)
+char &string::operator[](int index)
 {
     if (index < 0 || index >= arr_size)
         throw std::invalid_argument("Invalid index\n");
@@ -135,7 +140,7 @@ char &ds::string::operator[](int index)
 
 //--------------------------------------------------------------------------------
 
-char ds::string::operator[](int index) const
+char string::operator[](int index) const
 {
     if (index < 0 || index >= arr_size)
         throw std::invalid_argument("Invalid index\n");
@@ -144,7 +149,7 @@ char ds::string::operator[](int index) const
 
 //--------------------------------------------------------------------------------
 
-bool ds::operator<(const ds::string &left, const ds::string &right)
+bool operator<(const string &left, const string &right)
 {
     int i;
     for (i = 0; i < left.size() && i < right.size(); i++)
@@ -173,7 +178,7 @@ bool ds::operator<(const ds::string &left, const ds::string &right)
 
 //--------------------------------------------------------------------------------
 
-bool ds::operator>(const ds::string &left, const ds::string &right)
+bool operator>(const string &left, const string &right)
 {
     int i;
     for (i = 0; i < left.size() && i < right.size(); i++)
@@ -202,7 +207,7 @@ bool ds::operator>(const ds::string &left, const ds::string &right)
 
 //--------------------------------------------------------------------------------
 
-ds::string ds::operator+(const ds::string &str_a, const ds::string &str_b)
+string operator+(const string &str_a, const string &str_b)
 {
     string result;
     result.reserve(str_a.arr_size + str_b.arr_size + 1); // make room for the new string
@@ -224,7 +229,7 @@ ds::string ds::operator+(const ds::string &str_a, const ds::string &str_b)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::reserve(int alloc_size)
+void string::reserve(int alloc_size)
 {
     if (alloc_size <= this->arr_capacity)
         return;
@@ -243,7 +248,7 @@ void ds::string::reserve(int alloc_size)
 
 //--------------------------------------------------------------------------------
 
-ds::string &ds::string::operator+=(const ds::string &right)
+string &string::operator+=(const string &right)
 {
     this->reserve(this->arr_size + right.arr_size + 1);
     for (int i = this->arr_size, j = 0; j < right.arr_size; i++, j++)
@@ -257,7 +262,7 @@ ds::string &ds::string::operator+=(const ds::string &right)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::push_back(char ch)
+void string::push_back(char ch)
 {
     if (arr_size == 0 && arr_capacity == 1)
     {
@@ -295,7 +300,7 @@ void ds::string::push_back(char ch)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::pop_back()
+void string::pop_back()
 {
     if (arr_size == 0)
         return;
@@ -305,7 +310,7 @@ void ds::string::pop_back()
 
 //--------------------------------------------------------------------------------
 
-void ds::string::clear()
+void string::clear()
 {
     arr_size = 0;
     arr[arr_size] = '\0';
@@ -313,7 +318,7 @@ void ds::string::clear()
 
 //--------------------------------------------------------------------------------
 
-void ds::string::erase(int index)
+void string::erase(int index)
 {
     if (index < 0 || index >= arr_size)
         return;
@@ -335,7 +340,7 @@ void ds::string::erase(int index)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::replace(int pos, int count, ds::string str)
+void string::replace(int pos, int count, string str)
 {
     if (pos < 0)
         throw std::invalid_argument("Invalid index\n");
@@ -360,7 +365,7 @@ void ds::string::replace(int pos, int count, ds::string str)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::replace(int pos, int count, char *str)
+void string::replace(int pos, int count, char *str)
 {
     if (pos < 0)
         throw std::invalid_argument("Invalid index\n");
@@ -386,7 +391,7 @@ void ds::string::replace(int pos, int count, char *str)
     *this = result;
 }
 
-ds::string ds::string::substr(int pos, int count)
+string string::substr(int pos, int count)
 {
     if (pos < 0 || pos > arr_size)
         throw std::invalid_argument("Invalid index\n");
@@ -403,7 +408,7 @@ ds::string ds::string::substr(int pos, int count)
 
 //--------------------------------------------------------------------------------
 
-char &ds::string::front()
+char &string::front()
 {
     if (this->empty())
         throw std::invalid_argument("String is empty\n");
@@ -412,7 +417,7 @@ char &ds::string::front()
 
 //--------------------------------------------------------------------------------
 
-char &ds::string::back()
+char &string::back()
 {
     if (this->empty())
         throw std::invalid_argument("String is empty\n");
@@ -421,7 +426,7 @@ char &ds::string::back()
 
 //--------------------------------------------------------------------------------
 
-int ds::string::find(char ch)
+int string::find(char ch)
 {
     if (this->empty())
         return -1;
@@ -436,7 +441,7 @@ int ds::string::find(char ch)
 
 //--------------------------------------------------------------------------------
 
-void ds::string::reverse()
+void string::reverse()
 {
     if (arr_size <= 1)
         return;
@@ -444,19 +449,22 @@ void ds::string::reverse()
     for (int i = 0, j = arr_size - 1; i < j; i++, j--)
     // swap elements from two ends of an array until the centre is reached
     {
-        ds::swap(&arr[i], &arr[j]);
+        swap(&arr[i], &arr[j]);
     }
 }
 
 //--------------------------------------------------------------------------------
 
-std::istream &operator>>(std::istream &in, ds::string &value)
+std::istream &operator>>(std::istream &in, string &value)
 {
     const int MAX = 1024;
     char buff[MAX];
     in >> buff;
-    ds::string result(buff);
+    string result(buff);
     std::cout << "REsult: " << result<<'\n';
     value = result;
     return in;
+}
+
+
 }
