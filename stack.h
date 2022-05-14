@@ -18,6 +18,7 @@ namespace ds
 
         Node *top = nullptr;
 
+        void deep_copy(const stack &source); // deep copy for copy constructor and assignment operator
     public:
         stack();
         stack(const stack<Elem> &source)
@@ -26,13 +27,12 @@ namespace ds
         }
         stack &operator=(const stack<Elem> &source);
         ~stack();
-        void deep_copy(const stack &source);
         void push(const Elem &val);
         Elem pop();
         bool empty() const { return (top == nullptr); };
         int size();
-        Elem peek();
-        void clear();
+        Elem peek(); 
+        void clear(); // erases all the elements
     };
 
     //--------------------------------------------------------------------------------

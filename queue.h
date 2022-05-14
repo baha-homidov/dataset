@@ -17,6 +17,7 @@ namespace ds
 
         Node *rear = nullptr;
 
+        void deep_copy(const queue<Elem> &source); // deep copy for copy constructor and assignment operator
     public:
         queue() : front{nullptr}, rear{nullptr} {};
         queue(const queue &source)
@@ -31,7 +32,6 @@ namespace ds
         int size() const;
         bool empty() const { return (front == nullptr); };
         void clear();
-        void deep_copy(const queue<Elem> &source);
         void display()
         {
             Node *ptr = front;

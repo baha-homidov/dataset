@@ -10,11 +10,11 @@ namespace ds
 {
     class string
     {
-    public:
+    private:
         char *arr = nullptr;
         int arr_size;
         int arr_capacity;
-        void deep_copy(const string &source);
+        void deep_copy(const string &source); // deep copy for copy constructor and assignment operator
 
     public:
         string(const char *source = "");
@@ -31,8 +31,8 @@ namespace ds
         char operator[](int index) const;
         void push_back(char ch);
         void pop_back();
-        char &front();
-        char &back();
+        char front(); 
+        char back();
         bool empty() { return (arr_size == 0); }
         int find(char ch);
         void reverse();
@@ -44,14 +44,15 @@ namespace ds
         friend bool operator>(const string &left, const string &right);
         friend string operator+(const string &str_a, const string &str_b);
         string &operator+=(const string &right);
-        // friend std::istream &operator>>(std::istream &in, string &value);
 
-        void reserve(int alloc_size);
+
+        void reserve(int alloc_size); // pre-alloctes memore for string
+        int capacity() { return this->arr_capacity; };  // returns size of memory allocated by array
         void clear();
         void erase(int pos);
-        void replace(int pos, int pos_count, string str);
-        void replace(int pos, int pos_count, char str[]);
-        string substr(int pos, int pos_count);
+        void replace(int pos, int pos_count, string str); // replaces ([pos]...[pos+pos_count]) part of the string with a give string
+        void replace(int pos, int pos_count, char str[]); // overload which takes c-style string instead of ds::string
+        string substr(int pos, int pos_count); 
     };
 
 
@@ -408,7 +409,7 @@ string string::substr(int pos, int count)
 
 //--------------------------------------------------------------------------------
 
-char &string::front()
+char string::front()
 {
     if (this->empty())
         throw std::invalid_argument("String is empty\n");
@@ -417,7 +418,7 @@ char &string::front()
 
 //--------------------------------------------------------------------------------
 
-char &string::back()
+char string::back()
 {
     if (this->empty())
         throw std::invalid_argument("String is empty\n");
