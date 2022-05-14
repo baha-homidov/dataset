@@ -10,36 +10,50 @@ namespace ds
     template <typename T>
     class sparse_matrix
     {
-        //chech if T is a the right type
+        // chech if T is a the right type
         static_assert(std::is_arithmetic<T>::value, "Only arithmetic types are allowed");
 
     private:
-        template <typename U>
+        
         class Element
         {
         public:
             int row;
             int col;
-            U val;
+            T val;
         };
 
-        int row_num;
-        int col_num;
-        int elem_num;
+        int row_num = 0;
+        int col_num = 0;
+        int elem_num = 0;
 
-        Element<T> *elems;
+        Element *elems = nullptr;
 
+        void deep_copy(const sparse_matrix &source); // deep copy for copy constructor and assignment operator
     public:
         sparse_matrix(int m, int n, int num)
         {
             this->row_num = m;
             this->col_num = n;
             this->elem_num = num;
-            elems = new Element<T>[this->elem_num];
+            elems = new Element[this->elem_num];
         }
         ~sparse_matrix()
         {
             delete[] elems;
+        }
+        sparse_matrix(const sparse_matrix &source)
+        {
+            deep_copy(source);
+        }
+
+        sparse_matrix &operator=(const sparse_matrix &source)
+        {
+            if (this != &source)
+            {
+                deep_copy(source);
+            }
+            return *this;
         }
 
         sparse_matrix operator+(sparse_matrix &s);
@@ -50,10 +64,9 @@ namespace ds
         friend std::ostream &operator<<(std::ostream &os, sparse_matrix<U> &s);
     };
 
+    //--------------------------------------------------------------------------------
 
-//--------------------------------------------------------------------------------
-
-    template <class T>
+    template <typename T>
     ds::sparse_matrix<T> ds::sparse_matrix<T>::operator+(ds::sparse_matrix<T> &s)
     {
         int i, j, k;
@@ -90,10 +103,7 @@ namespace ds
         return *sum;
     }
 
-
-//--------------------------------------------------------------------------------
-
-
+    //--------------------------------------------------------------------------------
 
     template <typename T>
     std::__1::istream &operator>>(std::__1::istream &is, ds::sparse_matrix<T> &s)
@@ -107,7 +117,7 @@ namespace ds
         return is;
     }
 
-    template <class T>
+    template <typename T>
     std::ostream &operator<<(std::ostream &os, ds::sparse_matrix<T> &s)
     {
         int k = 0;
@@ -126,4 +136,20 @@ namespace ds
         return os;
     }
 
+}
+
+//--------------------------------------------------------------------------------
+
+template <typename T>
+void ds::sparse_matrix<T>::deep_copy(const ds::sparse_matrix<T> &source)
+{
+    delete[] elems;
+    row_num = source.row_num;
+    col_num = source.col_num;
+    elem_num = source.elem_num;
+    elems = new Element[elem_num];
+    for (int i = 0; i < elem_num; i++)
+    {
+        elems[i] = source.elems[i];
+    }
 }
