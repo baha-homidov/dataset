@@ -35,6 +35,9 @@ Stack implemented by using singly linked list.
 ## `ds::queue`
 Queue is implemented by using singly linked list.
 
+## `ds::sparse_matrix`
+Sparse matrix is implemented using raw dynamic arrays. Only works with artithmetic datatypes
+
 ## `ds::map`
 This data structure imitates the functionality of the std::map except iterators and some advanced functionalities. Just like std::map it uses key-value node. Operator **[]** with key used to access any value.
 ## `ds::graph`
