@@ -35,18 +35,21 @@ Doubly linked list with basic doubly lined list functionality.
 ## `ds::stack`
 
 Stack implemented by using singly linked list.  
-<p align="center"><img src="https://github.com/baha-homidov/dataset/blob/media/stack.png" height="600" /></p>   
+<p align="center"><img src="https://user-images.githubusercontent.com/96972109/205482580-bdf799e8-70ff-48c4-9bfb-ae1d6301ffc5.png" height="600" /></p>   
+
+
+
 
 ## `ds::queue`
 Queue is implemented by using singly linked list.  
-<p align="center"><img src="[https://github.com/baha-homidov/dataset/blob/media/queue.png](https://user-images.githubusercontent.com/96972109/205482471-e6b54229-720e-4a23-9383-76bb943574a7.png)" width="480" /></p>      
+<p align="center"><img src="https://user-images.githubusercontent.com/96972109/205482471-e6b54229-720e-4a23-9383-76bb943574a7.png" width="480" /></p>      
 
 
 
 
 ## `ds::sparse_matrix`
 Sparse matrix is implemented using raw dynamic arrays. Only works with artithmetic datatypes
-<p align="center"><img src="[https://github.com/baha-homidov/dataset/blob/media/sparse_matrix.png](https://user-images.githubusercontent.com/96972109/205482491-4dd5dfb2-dfb2-49e9-bb17-9a48e9756b71.png)" width="530" /></p>    
+<p align="center"><img src="https://user-images.githubusercontent.com/96972109/205482491-4dd5dfb2-dfb2-49e9-bb17-9a48e9756b71.png" width="530" /></p>    
 
 
 
