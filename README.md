@@ -18,7 +18,7 @@ In this project I try imitate the functionality of the STL library, by having si
 
 ## `ds::array`
 Dynamic Resizable array. Holds data by pre-allocating and re-allocating space according to the insertion and number of elements.  
-<p align="center"><img src="https://github.com/baha-homidov/dataset/blob/media/array.png" width="400" /></p> ![array](https://user-images.githubusercontent.com/96972109/205482341-f6019c1e-5783-4568-b429-a9a260085f43.png)
+<p align="center"><img src="https://user-images.githubusercontent.com/96972109/205482341-f6019c1e-5783-4568-b429-a9a260085f43.png" width="400" /></p>
 
 
 ## `ds::string`
