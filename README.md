@@ -23,13 +23,13 @@ Dynamic Resizable array. Holds data by pre-allocating and re-allocating space ac
 
 ## `ds::string`
 This datatype has basic functionality similar to std::string. Manages memory similar to ds::array  
-<p align="center"><img src="[https://github.com/baha-homidov/dataset/blob/media/string.png](https://user-images.githubusercontent.com/96972109/205482426-9f4cae07-c6cb-4157-a0c5-620c37691ac3.png)" width="400" /></p>  
+<p align="center"><img src="https://user-images.githubusercontent.com/96972109/205482426-9f4cae07-c6cb-4157-a0c5-620c37691ac3.png" width="400" /></p>  
 
 
 
 ## `ds::list`
 Doubly linked list with basic doubly lined list functionality.
-<p align="center"><img src="[https://github.com/baha-homidov/dataset/blob/media/linked_list.png](https://user-images.githubusercontent.com/96972109/205482460-b07ecbd5-a505-4681-8b7c-7ef19961d5c7.png)" width="700" /></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/96972109/205482460-b07ecbd5-a505-4681-8b7c-7ef19961d5c7.png" width="700" /></p>
 
 
 ## `ds::stack`
