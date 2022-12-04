@@ -18,15 +18,12 @@ In this project I try imitate the functionality of the STL library, by having si
 
 ## `ds::array`
 Dynamic Resizable array. Holds data by pre-allocating and re-allocating space according to the insertion and number of elements.  
-<p align="center"><img src="https://github.com/baha-homidov/dataset/blob/media/array.png" width="400" /></p> 
-
+<p align="center"><img src="https://github.com/baha-homidov/dataset/blob/media/array.png" width="400" /></p> ![array](https://user-images.githubusercontent.com/96972109/205482341-f6019c1e-5783-4568-b429-a9a260085f43.png)
 
 
 ## `ds::string`
 This datatype has basic functionality similar to std::string. Manages memory similar to ds::array  
 <p align="center"><img src="https://github.com/baha-homidov/dataset/blob/media/string.png" width="400" /></p>   
-
-
 
 ## `ds::list`
 Doubly linked list with basic doubly lined list functionality.
